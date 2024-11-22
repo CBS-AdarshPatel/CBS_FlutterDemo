@@ -33,12 +33,12 @@ class _PieChartScreenState extends State<PieChartScreen> {
         child: PieChart(
           dataMap: dataMap,
           animationDuration: const Duration(milliseconds: 800),
-          chartLegendSpacing: 32,
+          chartLegendSpacing: 50,
           chartRadius: MediaQuery.of(context).size.width / 3.2,
           colorList: colorList,
           initialAngleInDegree: 0,
           chartType: ChartType.ring,
-          ringStrokeWidth: 50,
+          ringStrokeWidth: 68,
           centerText: "ADARSH",
           legendOptions: LegendOptions(
             showLegendsInRow: false,

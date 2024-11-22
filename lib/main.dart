@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hreyeflutterdemo/DateFormate.dart';
+import 'package:hreyeflutterdemo/LineChartScreen.dart';
+import 'package:hreyeflutterdemo/OrgChartScreen.dart';
 import 'package:hreyeflutterdemo/PieChartScreen.dart';
 import 'package:hreyeflutterdemo/Toggle.dart';
 import 'HomePage.dart';
@@ -98,7 +100,7 @@ class _LoginDemoState extends State<LoginDemo> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => PieChartScreen()),
+                      MaterialPageRoute(builder: (_) => OrgChartScreen()),
                     );
                   },
                   child: Text(
