@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
+import 'package:hreyeflutterdemo/CreateForm.dart';
 import 'package:hreyeflutterdemo/DateFormate.dart';
+import 'package:hreyeflutterdemo/GenericStepper.dart';
 import 'package:hreyeflutterdemo/LineChartScreen.dart';
 import 'package:hreyeflutterdemo/OrgChartScreen.dart';
 import 'package:hreyeflutterdemo/PieChartScreen.dart';
+import 'package:hreyeflutterdemo/StapperScreen.dart';
 import 'package:hreyeflutterdemo/Toggle.dart';
+import 'package:hreyeflutterdemo/assets/AnimatedToggle.dart';
+import 'package:hreyeflutterdemo/assets/Stapper.dart';
 import 'HomePage.dart';
 
 void main() {
@@ -21,17 +27,36 @@ class MyApp extends StatelessWidget {
 }
 
 class LoginDemo extends StatefulWidget {
+
   @override
   _LoginDemoState createState() => _LoginDemoState();
 }
 
 class _LoginDemoState extends State<LoginDemo> {
+  // Dynamically generated steps
+  final List<Step> steps = List.generate(
+    4,
+        (index) => Step(
+      title: Text("Step ${index + 1}"),
+      content: Text("Content for Step ${index + 1}"),
+      isActive: true,
+    ),
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Login Page"),
+        title: Row(
+          children: [
+            CircleAvatar(
+              radius: 20, // Adjust size as needed
+              backgroundImage: AssetImage('asset/images/profile.jpg'), // Path to your image
+            ),
+            SizedBox(width: 20), // Add some spacing
+            Text("Login Page"),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -72,7 +97,7 @@ class _LoginDemoState extends State<LoginDemo> {
               ),
             ),
             /*ElevatedButton(
-              onPressed: (){
+              onPressed: () {
                 //TODO FORGOT PASSWORD SCREEN GOES HERE
               },
               child: Text(
@@ -100,7 +125,39 @@ class _LoginDemoState extends State<LoginDemo> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => OrgChartScreen()),
+                      MaterialPageRoute(builder: (_) => AnimatedToggle()),
+                      //MaterialPageRoute(builder: (_) => Toggle()),
+                      //MaterialPageRoute(builder: (_) => Stapper()),
+                      /*MaterialPageRoute(builder: (_) => const GenericStepper(
+                        appBarTitle: 'Custom Stepper',
+                        appBarColor: Colors.green,
+                        steps: [
+                          Step(
+                            title: const SizedBox.shrink(),
+                            content: const SizedBox.shrink(),
+                            isActive: true,
+                          ),
+                          Step(
+                            title: const SizedBox.shrink(),
+                            content: const SizedBox.shrink(),
+                            isActive: true,
+                          ),
+                          Step(
+                            title: const SizedBox.shrink(),
+                            content: const SizedBox.shrink(),
+                            isActive: true,
+                          ),
+                          Step(
+                            title: const SizedBox.shrink(),
+                            content: const SizedBox.shrink(),
+                            isActive: true,
+                          ),
+                        ],
+                        nextButtonColor: Colors.blue,
+                        previousButtonColor: Colors.orange,
+                      ),
+                      ),*/
+
                     );
                   },
                   child: Text(

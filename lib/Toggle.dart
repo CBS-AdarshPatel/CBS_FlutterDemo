@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:dots_indicator/dots_indicator.dart';
+
 
 class Toggle extends StatefulWidget {
   const Toggle({super.key});
@@ -9,14 +11,15 @@ class Toggle extends StatefulWidget {
 }
 
 class _ToggleState extends State<Toggle> {
-  // Define the isChecked variable to hold the toggle state
-  bool isChecked = false;
   bool _giftwrapping = false;
   int _selectedIndex = 0;
+  double currentIndexPage = 0.0; // Ensure this is a double
+  final int pageLength = 3;
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      currentIndexPage = index.toDouble(); // Sync dots with bottom navigation
     });
   }
 
@@ -27,7 +30,7 @@ class _ToggleState extends State<Toggle> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 20), // Add top padding here
+            padding: const EdgeInsets.only(top: 20),
             child: Text(
               'Gift Wrapping',
               style: const TextStyle(
@@ -66,6 +69,15 @@ class _ToggleState extends State<Toggle> {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
+            ),
+          ),
+          const Spacer(),
+          DotsIndicator(
+            dotsCount: pageLength,
+            position: _selectedIndex, // Pass the double here
+            decorator: const DotsDecorator(
+              color: Colors.black87,
+              activeColor: Colors.redAccent,
             ),
           ),
         ],
